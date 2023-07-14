@@ -14,9 +14,7 @@ const IssueItem = ({ issue }: any) => {
 
   return (
     <Center onClick={handleClick}>
-      <Padding16>
-        <IconLeaf />
-      </Padding16>
+      <Padding16>{issue.state === 'open' && <IconLeaf />}</Padding16>
       <Article>
         <Left>
           <Title>
@@ -25,7 +23,7 @@ const IssueItem = ({ issue }: any) => {
           </Title>
 
           <Bottom>
-            <span>작성자 : {issue.username} </span>
+            <span>작성자 : {issue.user.login} </span>
             <span>작성일 : {issue.created_at.slice(0, 10)}</span>
           </Bottom>
         </Left>
@@ -39,6 +37,11 @@ const IssueItem = ({ issue }: any) => {
 };
 const Padding16 = styled.div`
   padding: 16px;
+  > svg {
+    width: 24px;
+    height: 24px;
+    fill: #217e3b;
+  }
 `;
 const Center = styled.div`
   display: flex;
